@@ -1,10 +1,9 @@
 <script setup lang="ts">
+
 </script>
 
 <template>
   <div>
-    <h1>RickStar</h1>
-    <RickFilters />
-    <RickList />
+    RickCitadel
   </div>
 </template>
