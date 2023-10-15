@@ -1,17 +1,19 @@
+type Status = 'Alive' | 'Dead' | 'unknown'
+
+type Gender = 'Female' | 'Male' | 'Genderless' | 'unknown'
+
 export interface Character {
   /** The id of the character. */
   id: number
   /** The name of the character. */
   name: string
   /** The status of the character ('Alive', 'Dead' or 'unknown'). */
-  status: 'Alive' | 'Dead' | 'unknown'
-  /** The species of the character. */
+  status: Status
   species: string
   /** The type or subspecies of the character. */
   type: string
   /** The gender of the character ('Female', 'Male', 'Genderless' or 'unknown'). */
-  gender: 'Female' | 'Male' | 'Genderless' | 'unknown'
-  /** Name and link to the character's origin location. */
+  gender: Gender
   origin: {
     name: string
     url: string
@@ -42,3 +44,10 @@ export interface GetListResponse<T> {
 }
 
 export interface CharacterListResponse extends GetListResponse<Character> {}
+
+export interface FilterQuery {
+  gender?: Gender
+  status?: Status
+  species?: string
+  name?: string
+}

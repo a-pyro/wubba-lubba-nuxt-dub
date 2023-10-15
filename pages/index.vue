@@ -1,17 +1,24 @@
 <script setup lang="ts">
-import type { CharacterListResponse } from '~/types'
+import type { CharacterListResponse, FilterQuery } from '~/types'
 
 const { public: { apiBase } } = useRuntimeConfig()
 
 const url = ref<string>(`${apiBase}/character`)
 
+const query = reactive<FilterQuery>({
+  name: undefined,
+  gender: undefined,
+  species: undefined,
+  status: undefined,
+})
+
 const { data } = useFetch<CharacterListResponse>(
   () => url.value,
   {
     transform: (resp) => {
-      console.log('🚀 ~ resp:', resp)
       return resp
     },
+    query,
   },
 )
 
@@ -35,7 +42,7 @@ function fetchNext() {
     <button @click="fetchNext">
       Next
     </button>
-    <RickFilters />
+    <RickFilters v-model="query.name" />
     <RickList :characters="data?.results ?? []" />
   </div>
 </template>
