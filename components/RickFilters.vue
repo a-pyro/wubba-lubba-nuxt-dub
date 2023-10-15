@@ -1,26 +1,37 @@
 <script setup lang="ts">
-const { modelValue } = defineProps<{
-  modelValue?: string
-}>()
+import type { FilterQuery } from '~/types'
+import { speciesOptions } from '~/utils/options'
+
+const { name, species } = defineProps<FilterQuery>()
 
 const emit = defineEmits<{
-  (event: 'update:modelValue', value?: string): void
+  (event: 'update:name', value?: string): void
+  (event: 'update:species', value?: string): void
+
 }>()
 
-function handleInput(event: Event) {
+function handleNameChange(event: Event) {
   const { value } = event.target as HTMLInputElement
-  // emit undefined if value is empty in order to pass undefined query param
   const emitValue = value === '' ? undefined : value
-  emit('update:modelValue', emitValue)
+  emit(`update:name`, emitValue)
+}
+
+function handleSpeciesChange(specie?: string) {
+  emit('update:species', specie)
 }
 </script>
 
 <template>
   <div>
     <input
-      :value="modelValue"
-      type="text" name="searchBar"
-      @input="handleInput"
+      :value="name"
+      type="text" name="name"
+      @input="handleNameChange"
     >
+    <CheckboxFilter
+      :value="species"
+      :options="speciesOptions"
+      @update:change="handleSpeciesChange"
+    />
   </div>
 </template>

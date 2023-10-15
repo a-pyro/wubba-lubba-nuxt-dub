@@ -23,7 +23,7 @@ const { data } = useFetch<CharacterListResponse>(
 )
 
 function fetchPrevious() {
-  url.value = data.value?.info.prev ?? apiBase
+  url.value = data.value?.info.prev ?? url.value
 }
 
 function fetchNext() {
@@ -42,7 +42,7 @@ function fetchNext() {
     <button @click="fetchNext">
       Next
     </button>
-    <RickFilters v-model="query.name" />
+    <RickFilters v-model:name="query.name" v-model:species="query.species" />
     <RickList :characters="data?.results ?? []" />
   </div>
 </template>
