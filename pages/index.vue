@@ -2,5 +2,10 @@
 </script>
 
 <template>
-  <div>RICCKKKTASTIK</div>
+  <div>
+    <div>
+      <h1>RickStar</h1>
+      <Filters />
+    </div>
+  </div>
 </template>
