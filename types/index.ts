@@ -40,3 +40,5 @@ export interface GetListResponse<T> {
   }
   results: T[]
 }
+
+export interface CharacterListResponse extends GetListResponse<Character> {}
