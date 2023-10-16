@@ -1,6 +1,6 @@
-type Status = 'Alive' | 'Dead' | 'unknown'
+export type Status = 'Alive' | 'Dead' | 'unknown'
 
-type Gender = 'Female' | 'Male' | 'Genderless' | 'unknown'
+export type Gender = 'Female' | 'Male' | 'Genderless' | 'unknown'
 
 export interface Character {
   /** The id of the character. */

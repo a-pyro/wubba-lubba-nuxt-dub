@@ -15,9 +15,7 @@ const { character } = defineProps<Props>()
         <h2 class="text-lg font-bold">
           {{ character.name }}
         </h2>
-        <p class="text-sm text-gray-600">
-          {{ character.status }}
-        </p>
+        <StatusBadge :status="character.status" />
         <!-- You can add more character details here -->
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente eos molestiae nesciunt tenetur accusamus debitis repellendus. Temporibus cumque nemo, quaerat in ullam facere adipisci magni repellendus atque aperiam inventore dolorum mollitia. Error accusantium assumenda architecto unde voluptatem rem, sunt magni ab dolorem, nemo hic est dolorum, possimus inventore? Mollitia, modi!</p>
       </div>
