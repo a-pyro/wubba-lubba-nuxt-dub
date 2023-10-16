@@ -24,12 +24,8 @@ const { data } = useFetch<CharacterListResponse>(
   },
 )
 
-function fetchPrevious() {
-  url.value = data.value?.info.prev ?? url.value
-}
-
-function fetchNext() {
-  url.value = data.value?.info.next ?? url.value
+function setUrl(time: 'prev' | 'next') {
+  url.value = data.value?.info[time] ?? url.value
 }
 </script>
 
@@ -37,11 +33,11 @@ function fetchNext() {
   <div>
     <h1>RickStar</h1>
     <button
-      @click="fetchPrevious"
+      @click="() => setUrl('prev')"
     >
       Prev
     </button>
-    <button @click="fetchNext">
+    <button @click="() => setUrl('next')">
       Next
     </button>
     <RickFilters v-model:name="query.name" v-model:species="query.species" />
