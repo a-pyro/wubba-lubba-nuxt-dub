@@ -27,7 +27,10 @@ function handleSpeciesChange(specie?: string) {
   <div>
     <input
       :value="name"
-      type="text" name="name"
+      type="text"
+      name="name" placeholder="Search a character"
+      class="w-full px-4 rounded-full shadow-lg placeholder:text-blue-medium focus:outline-none focus:ring-1 focus:ring-blue-medium"
+      style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);"
       @input="handleNameChange"
     >
     <CheckboxFilter

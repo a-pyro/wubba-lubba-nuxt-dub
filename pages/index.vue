@@ -27,6 +27,11 @@ const { data } = useFetch<CharacterListResponse>(
 function setUrl(time: 'prev' | 'next') {
   url.value = data.value?.info[time] ?? url.value
 }
+
+const currentPage = computed(() => {
+  const page = url.value.split('?page=')[1] ?? 1
+  return page
+})
 </script>
 
 <template>
@@ -38,6 +43,12 @@ function setUrl(time: 'prev' | 'next') {
     >
       Prev
     </button>
+    <div>
+      {{ currentPage }}
+    </div>
+    <div>
+      {{ data?.info.pages }}
+    </div>
     <button @click="() => setUrl('next')">
       Next
     </button>
