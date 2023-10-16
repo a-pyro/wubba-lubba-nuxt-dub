@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   typescript: {
     strict: true,
   },
+  modules: ['@nuxtjs/tailwindcss'],
   runtimeConfig: {
     public: {
       apiBase: 'https://rickandmortyapi.com/api',

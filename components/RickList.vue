@@ -9,9 +9,7 @@ const { characters } = defineProps<Props>()
 </script>
 
 <template>
-  <div>
-    <div v-for="character in characters" :key="character.id">
-      <RickCard :character="character" />
-    </div>
-  </div>
+  <main class="flex flex-wrap -m-1">
+    <RickCard v-for="character in characters" :key="character.id" :character="character" />
+  </main>
 </template>

@@ -2,6 +2,8 @@
 import type { FilterQuery } from '~/types'
 import { speciesOptions } from '~/utils/options'
 
+// TODO - Handle reset pagination when emitting other filters
+
 const { name, species } = defineProps<FilterQuery>()
 
 const emit = defineEmits<{
