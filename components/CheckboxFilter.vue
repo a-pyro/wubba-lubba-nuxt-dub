@@ -22,8 +22,6 @@ function handleChange(e: Event, value?: T) {
     <input
       :id="option.value"
       type="checkbox"
-      name="checkbox"
-      :value="option.value"
       :checked="value === option.value"
       @change="(e) => handleChange(e, option.value)"
     >
