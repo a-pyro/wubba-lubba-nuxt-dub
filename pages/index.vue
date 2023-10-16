@@ -13,6 +13,8 @@ const query = reactive<FilterQuery>({
 })
 
 const { data } = useFetch<CharacterListResponse>(
+  // TODO - handle null/undefined and revert fetch results
+  // handle 404 and empty results
   () => url.value,
   {
     transform: (resp) => {

@@ -1,5 +1,4 @@
 <script setup lang="ts" generic="T extends string">
-// TODO - handle null/undefined and revert fetch results
 interface Props {
   options: Option<T>[]
   value?: T
@@ -10,19 +9,23 @@ const emit = defineEmits<{
   (event: 'update:change', value?: T): void
 }>()
 
-function handleChange(value: T) {
-  emit('update:change', value)
+function handleChange(e: Event, value?: T) {
+  const isChecked = (e.target as HTMLInputElement).checked
+  const emitValue = isChecked ? value : undefined
+  emit('update:change', emitValue)
 }
 </script>
 
 <template>
   <div v-for="option in options" :key="option.value">
-    <label>{{ option.label }}</label>
+    <label :for="option.value">{{ option.label }}</label>
     <input
+      :id="option.value"
       type="checkbox"
+      name="checkbox"
       :value="option.value"
-      :checked="option.value === value"
-      @change="() => handleChange(option.value)"
+      :checked="value === option.value"
+      @change="(e) => handleChange(e, option.value)"
     >
   </div>
 </template>
