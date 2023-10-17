@@ -29,7 +29,9 @@ function setUrl(time: 'prev' | 'next') {
 }
 
 const currentPage = computed(() => {
-  const page = url.value.split('?page=')[1] ?? 1
+  const page = url.value.split('?page=')[1]
+  // this canbe 7&species=human so we need to extract the number
+
   return page
 })
 </script>
@@ -38,7 +40,13 @@ const currentPage = computed(() => {
   <div
     class="container mx-auto p-5"
   >
+    <img
+      src="~assets/icons/arrow.svg" class="
+    w-2 bg-red-600
+    "
+    >
     <button
+
       @click="() => setUrl('prev')"
     >
       Prev

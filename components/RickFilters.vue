@@ -29,8 +29,7 @@ function handleSpeciesChange(specie?: string) {
       :value="name"
       type="text"
       name="name" placeholder="Search a character"
-      class="w-full px-4 rounded-full shadow-lg placeholder:text-blue-medium focus:outline-none focus:ring-1 focus:ring-blue-medium"
-      style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);"
+      class="w-full px-4 py-1.5 rounded-full placeholder:text-blue-medium focus:outline-none focus:ring-1 focus:ring-blue-medium shadow-lg"
       @input="handleNameChange"
     >
     <CheckboxFilter
