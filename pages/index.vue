@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { CharacterListResponse, FilterQuery } from '~/types'
+import { PAGE_REGEX } from '~/utils/const'
 
 const { public: { apiBase } } = useRuntimeConfig()
 
@@ -29,37 +30,24 @@ function setUrl(time: 'prev' | 'next') {
 }
 
 const currentPage = computed(() => {
-  const page = url.value.split('?page=')[1]
-  // this canbe 7&species=human so we need to extract the number
-
+  const match = url.value.match(PAGE_REGEX)
+  const page = match ? +match[1] : 1
   return page
+})
+
+watch(query, () => {
+  url.value = `${apiBase}/character`
 })
 </script>
 
 <template>
-  <div
-    class="container mx-auto p-5"
-  >
-    <img
-      src="~assets/icons/arrow.svg" class="
-    w-2 bg-red-600
-    "
-    >
-    <button
-
-      @click="() => setUrl('prev')"
-    >
-      Prev
-    </button>
-    <div>
-      {{ currentPage }}
-    </div>
-    <div>
-      {{ data?.info.pages }}
-    </div>
-    <button @click="() => setUrl('next')">
-      Next
-    </button>
+  <div class="container mx-auto p-5">
+    <PageNagivator
+      :current-page="currentPage"
+      :total-pages="data?.info.pages ?? 1"
+      :on-next="() => setUrl('next')"
+      :on-prev="() => setUrl('prev')"
+    />
     <RickFilters v-model:name="query.name" v-model:species="query.species" />
     <RickList :characters="data?.results ?? []" />
   </div>

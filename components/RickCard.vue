@@ -8,7 +8,7 @@ const { character } = defineProps<Props>()
 </script>
 
 <template>
-  <div class="w-full sm:w-1/2 lg:w-1/3 transform transition-transform hover:-translate-y-1 p-1">
+  <div class="w-full sm:w-1/2 lg:w-1/3 transform transition-transform hover:-translate-y-1 p-5">
     <div class="rounded shadow-md hover:shadow-lg">
       <img :src="character.image" alt="Character Image" class="w-full h-80 object-cover rounded-t">
       <div class="p-4">
