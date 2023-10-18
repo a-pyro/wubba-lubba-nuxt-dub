@@ -41,14 +41,16 @@ watch(query, () => {
 </script>
 
 <template>
-  <div class="container mx-auto p-5">
+  <div class="sticky top-0 z-10">
     <PageNagivator
       :current-page="currentPage"
       :total-pages="data?.info.pages ?? 1"
       :on-next="() => setUrl('next')"
       :on-prev="() => setUrl('prev')"
     />
-    <RickFilters v-model:name="query.name" v-model:species="query.species" />
+    <RickFilters v-model:name="query.name" v-model:species="query.species" class="container mx-auto px-5 relative -top-7" />
+  </div>
+  <div class="container mx-auto p-5 -mt-9">
     <RickList :characters="data?.results ?? []" />
   </div>
 </template>

@@ -8,18 +8,20 @@ defineProps<{
 </script>
 
 <template>
-  <button
-    @click="onPrev"
-  >
-    Prev
-  </button>
-  <div>
-    {{ currentPage }}
-  </div>
-  <div>
-    {{ totalPages }}
-  </div>
-  <button @click="onNext">
-    Next
-  </button>
+  <header class="flex w-full justify-center items-center gap-1 h-10v bg-white">
+    <button
+      @click="onPrev"
+    >
+      Prev
+    </button>
+    <div>
+      Page {{ currentPage }}
+    </div>
+    <div>
+      of {{ totalPages }}
+    </div>
+    <button @click="onNext">
+      Next
+    </button>
+  </header>
 </template>
